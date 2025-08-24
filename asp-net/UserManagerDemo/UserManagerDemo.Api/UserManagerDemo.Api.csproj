@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+		<PackageReference Include="FluentResults" />
+		<PackageReference Include="FluentValidation" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\UserManagerDemo.Application\UserManagerDemo.Application.csproj" />
+		<ProjectReference Include="..\UserManagerDemo.Infrastructure\UserManagerDemo.Infrastructure.csproj" />
+	</ItemGroup>
+</Project>

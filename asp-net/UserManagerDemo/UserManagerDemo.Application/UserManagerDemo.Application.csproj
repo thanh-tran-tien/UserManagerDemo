@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+		<PackageReference Include="FluentValidation" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\UserManagerDemo.Domain\UserManagerDemo.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
