@@ -31,6 +31,17 @@ public class Program
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAngularApp", policy =>
+            {
+                policy.WithOrigins("http://localhost:4200")
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowCredentials();
+            });
+        });
+
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo
@@ -108,8 +119,18 @@ public class Program
                     Encoding.UTF8.GetBytes(jwtSettings["Key"]!)
                 )
             };
+            options.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    if (context.Request.Cookies.ContainsKey("jwt"))
+                    {
+                        context.Token = context.Request.Cookies["jwt"];
+                    }
+                    return Task.CompletedTask;
+                }
+            };
         });
-
 
         var app = builder.Build();
         DbInitializer.InitializeDatabase(app.Services);
@@ -128,6 +149,8 @@ public class Program
 
         // Add UoW middleware global
         app.UseUnitOfWork();
+
+        app.UseCors("AllowAngularApp");
 
         app.UseHttpsRedirection();
 

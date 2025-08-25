@@ -10,5 +10,6 @@ public class UserProfile : Profile
     {
         CreateMap<Domain.Entity.ApplicationUserProfile, UserDto>().ReverseMap();
         CreateMap<Domain.Entity.ApplicationUserProfile, ReadUserDto>().ReverseMap();
+        CreateMap<Domain.Entity.ApplicationUserProfile, UpdateUserDto>().ReverseMap();
     }
 }

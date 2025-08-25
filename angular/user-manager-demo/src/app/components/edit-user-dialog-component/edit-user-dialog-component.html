@@ -1,0 +1,35 @@
+<div class="p-4">
+  <h1 mat-dialog-title>Edit User</h1>
+
+  <div mat-dialog-content>
+    <form [formGroup]="form" class="flex flex-col space-y-4 w-full">
+        <mat-form-field appearance="outline" class="w-full block pe-2">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full block">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full block pe-2">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full block">
+          <mat-label>Zip Code</mat-label>
+          <input matInput formControlName="zipCode">
+        </mat-form-field>
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+      Save
+    </button>
+    <button mat-button (click)="close()">Cancel</button>
+  </div>
+</div>

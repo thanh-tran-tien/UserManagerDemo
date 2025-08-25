@@ -2,6 +2,7 @@
 using FluentResults;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UserManagerDemo.Api.Common.Results;
 using UserManagerDemo.Application.Common.Interface;
@@ -14,6 +15,7 @@ namespace UserManagerDemo.API.Controllers
     public class UserController : BaseApiController<UserController>
 
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IRepository<ApplicationUserProfile, Guid> _userRepository;
         private readonly IValidator<UserDto> _userValidator;
 
@@ -21,10 +23,12 @@ namespace UserManagerDemo.API.Controllers
             IMapper mapper,
             ILogger<UserController> logger,
             IRepository<ApplicationUserProfile, Guid> userRepository,
-            IValidator<UserDto> userValidator) : base(mapper, logger)
+            IValidator<UserDto> userValidator,
+            UserManager<ApplicationUser> userManager) : base(mapper, logger)
         {
             _userRepository = userRepository;
             _userValidator = userValidator;
+            _userManager = userManager;
         }
 
         [HttpPost]
@@ -48,7 +52,9 @@ namespace UserManagerDemo.API.Controllers
                 return Result.Fail($"User {id} not found for delete");
             }
 
+            var appUser = await _userManager.FindByIdAsync(user.UserId.ToString());
             await _userRepository.DeleteAsync(user);
+            await _userManager.DeleteAsync(appUser);
 
             _logger.LogInformation($"User {id} deleted");
 
@@ -94,7 +100,7 @@ namespace UserManagerDemo.API.Controllers
         }
 
         [HttpPut]
-        public async Task<Result> Update(Guid id, UserDto dto)
+        public async Task<Result> Update(Guid id, UpdateUserDto dto)
         {
             var existing = await _userRepository.GetByIdAsync(id);
             if (existing == null)

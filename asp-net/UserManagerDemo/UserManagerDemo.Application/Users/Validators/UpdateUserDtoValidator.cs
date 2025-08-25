@@ -3,18 +3,15 @@ using UserManagerDemo.Application.Users.Dtos;
 
 namespace UserManagerDemo.Application.Users.Validators;
 
-public class UserDtoValidator : AbstractValidator<UserDto>
+public class UpdateUserDtoValidator : AbstractValidator<UpdateUserDto>
 {
-    public UserDtoValidator()
+    public UpdateUserDtoValidator()
     {
         RuleFor(x => x.FirstName)
             .NotEmpty().Length(1, 50);
 
         RuleFor(x => x.LastName)
             .NotEmpty().Length(1, 50);
-
-        RuleFor(x => x.Email)
-            .NotEmpty().EmailAddress();
 
         RuleFor(x => x.PhoneNumber)
             .Matches(@"^\+?[0-9\s\-]{7,15}$")

@@ -1,0 +1,60 @@
+.container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 220px;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 16px;
+}
+
+.full-width-table {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.filter-input {
+  width: 300px;
+  margin-bottom: 12px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-btn {
+  min-width: unset;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.avatar {
+  background-color: #3f51b5; /* màu chủ đạo Material */
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
