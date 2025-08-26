@@ -78,6 +78,7 @@ public class AuthController : ControllerBase
         {
             Token = accessToken,
             Expiration = refreshToken.Expires,
+            RefreshToken = refreshToken.Token,
             RefreshTokenExpiration = refreshToken.Expires
         }));
     }
