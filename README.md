@@ -101,7 +101,7 @@ User Management
 | PUT    | /api/User/Update/{id} | Update user profile       |
 | DELETE | /api/User/Delete/{id} | Delete user               |
 
-Authentication
+## Authentication
 
 - JWT access token stored in HttpOnly Cookie (jwt)
 - Refresh token stored in HttpOnly Cookie (refreshToken)
@@ -113,7 +113,7 @@ Claims
 - emailaddress: User Email
 - Frontend uses AuthService to manage login state & token refresh.
 
-Pagination & Filtering
+## Pagination & Filtering
 
 Backend: ```PagedResult<T>``` generic class with:
 - ```Items```, ```TotalCount```, ```PageIndex```, ```PageSize```, ```TotalPages```
@@ -121,7 +121,7 @@ Backend: ```PagedResult<T>``` generic class with:
 
 Frontend: Angular Material ```MatTableDataSource``` with filtering via ```filterPredicate```.
 
-Project Structure
+## Project Structure
 
 Backend
 ```
@@ -164,7 +164,7 @@ UserManagerDemo/
 
  ```
 
-Future Improvements
+## Future Improvements
 
 - Add role-based authorization
 - Enhance UI/UX for user management
