@@ -1,4 +1,8 @@
 ﻿# UserManagerDemo
+ 
+Watch the demo
+https://github.com/user-attachments/assets/29180331-1053-4345-8834-d3092001b620
+
 
 A demo User Management application using **ASP.NET Core 9** (Clean Architecture) for the backend and **Angular 20** for the frontend. Supports:
 
